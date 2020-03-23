@@ -1,6 +1,7 @@
 pluginManagement {
     plugins {
         id 'org.springframework.boot' version "${spring_boot_version}"
+        id 'com.google.cloud.tools.jib' version "${jib_plugin_version}"
         id 'net.ltgt.apt-eclipse' version "${apt_plugin_version}"
         id 'net.ltgt.apt-idea' version "${apt_plugin_version}"
         id 'net.ltgt.apt' version "${apt_plugin_version}"
@@ -8,4 +9,4 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'sor'
+rootProject.name = 'sor-bbva'

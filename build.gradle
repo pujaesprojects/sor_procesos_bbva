@@ -11,6 +11,7 @@ buildscript {
 
 plugins {
     id 'org.springframework.boot' version '2.2.5.RELEASE'
+    id "com.google.cloud.tools.jib"
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id "java"
     id "maven-publish"
@@ -25,7 +26,7 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 assert System.properties["java.specification.version"] == "1.8" || "11" || "12" || "13"
-
+apply from: "gradle/docker.gradle"
 apply from: "gradle/profile_dev.gradle"
 
 configurations {
