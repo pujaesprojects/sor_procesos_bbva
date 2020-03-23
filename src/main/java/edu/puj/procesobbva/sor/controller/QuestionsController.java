@@ -2,7 +2,6 @@ package edu.puj.procesobbva.sor.controller;
 
 import com.github.javafaker.Faker;
 import edu.puj.procesobbva.sor.controller.vm.AnswerListVM;
-import edu.puj.procesobbva.sor.controller.vm.AnswerVM;
 import edu.puj.procesobbva.sor.domain.Answer;
 import edu.puj.procesobbva.sor.domain.Person;
 import edu.puj.procesobbva.sor.domain.Question;
@@ -13,11 +12,8 @@ import edu.puj.procesobbva.sor.dto.questionnaire.QuestionnaireDTO;
 import edu.puj.procesobbva.sor.dto.questionnaire.ResponseAnswerDTO;
 import edu.puj.procesobbva.sor.dto.questionnaire.ResponseDTO;
 import edu.puj.procesobbva.sor.repository.AnswerRepository;
-import edu.puj.procesobbva.sor.repository.QuestionRepository;
 import edu.puj.procesobbva.sor.utils.QuestionUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,11 +37,9 @@ import java.util.stream.Collectors;
 @RequestMapping("/questions")
 @Slf4j
 public class QuestionsController {
-    private final QuestionRepository questionRepository;
     private final AnswerRepository answerRepository;
 
-    public QuestionsController(QuestionRepository questionRepository, AnswerRepository answerRepository) {
-        this.questionRepository = questionRepository;
+    public QuestionsController(AnswerRepository answerRepository) {
         this.answerRepository = answerRepository;
     }
 
