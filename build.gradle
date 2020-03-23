@@ -29,6 +29,15 @@ assert System.properties["java.specification.version"] == "1.8" || "11" || "12" 
 apply from: "gradle/docker.gradle"
 apply from: "gradle/profile_dev.gradle"
 
+checkstyle {
+    toolVersion "${checkstyle_version}"
+    configFile file("checkstyle.xml")
+    checkstyleTest.enabled = false
+}
+nohttp {
+    source.include "build.gradle", "README.md"
+}
+
 configurations {
     providedRuntime
     implementation.exclude module: "spring-boot-starter-tomcat"
