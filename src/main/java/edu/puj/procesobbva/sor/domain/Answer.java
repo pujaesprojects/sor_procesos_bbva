@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,7 +16,6 @@ import javax.validation.constraints.Size;
 
 @Getter
 @Setter
-@ToString
 @Entity
 @Table(name = "respuesta")
 public class Answer extends AbstractEntity {
@@ -38,4 +37,13 @@ public class Answer extends AbstractEntity {
     @JoinColumn(name = "persona_id")
     @JsonBackReference
     private Person person;
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+            .append("id", this.getId())
+            .append("value", value)
+            .append("isCorrect", isCorrect)
+            .toString();
+    }
 }

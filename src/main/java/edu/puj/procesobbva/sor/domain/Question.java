@@ -5,7 +5,7 @@ import edu.puj.procesobbva.sor.domain.enumeration.QuestionType;
 import edu.puj.procesobbva.sor.domain.enumeration.Status;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -21,7 +21,6 @@ import java.util.Set;
 
 @Getter
 @Setter
-@ToString
 @Entity
 @Table(name = "pregunta")
 public class Question extends AbstractEntity {
@@ -50,4 +49,14 @@ public class Question extends AbstractEntity {
     )
     @JsonBackReference
     private Set<Answer> answers;
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+            .append("id", this.getId())
+            .append("statement", statement)
+            .append("type", type)
+            .append("status", status)
+            .toString();
+    }
 }
