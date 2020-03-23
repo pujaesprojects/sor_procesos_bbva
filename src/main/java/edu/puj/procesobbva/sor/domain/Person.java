@@ -1,15 +1,18 @@
 package edu.puj.procesobbva.sor.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import edu.puj.procesobbva.sor.domain.enumeration.DocumentType;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
@@ -18,6 +21,7 @@ import javax.validation.constraints.Past;
 import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -37,7 +41,7 @@ public class Person extends AbstractEntity {
     @Column(name = "apellidos")
     private String lastName;
 
-    @Size(min = 10, max = 50)
+    @Size(min = 3, max = 50)
     @Column(name = "telefono", length = 50)
     private String phone;
 
@@ -79,4 +83,11 @@ public class Person extends AbstractEntity {
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "person")
     private Client client;
+
+    @JsonManagedReference
+    @OneToMany(
+        fetch = FetchType.LAZY, mappedBy = "person",
+        cascade = CascadeType.ALL, orphanRemoval = true
+    )
+    private Set<Answer> answers;
 }

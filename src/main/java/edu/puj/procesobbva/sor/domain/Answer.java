@@ -1,0 +1,41 @@
+package edu.puj.procesobbva.sor.domain;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+@Getter
+@Setter
+@ToString
+@Entity
+@Table(name = "respuesta")
+public class Answer extends AbstractEntity {
+    private static final long serialVersionUID = 2957253887417284793L;
+
+    @Size(max = 255)
+    @Column(name = "valor")
+    private String value;
+
+    @Column(name = "es_correecta")
+    private Boolean isCorrect = false;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "pregunta_id")
+    @JsonManagedReference
+    private Question question;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "persona_id")
+    @JsonBackReference
+    private Person person;
+}

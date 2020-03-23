@@ -6,5 +6,8 @@ public enum QuestionType {
     CUENTA,
     EDAD,
     TRABAJO,
-    PROFESION
+    PROFESION,
+    ANHO,
+    FECHA,
+    MARCA_CARRO;
 }
