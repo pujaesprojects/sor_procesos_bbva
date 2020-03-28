@@ -10,4 +10,6 @@ import java.util.List;
 @RepositoryRestResource
 public interface OfferRepository extends PagingAndSortingRepository<Offer, Long> {
     List<Offer> findAllByApplicationId(@Param("applicationId") Long id);
+
+    List<Offer> findAllByApplicationPersonIdentityDocument(String personId);
 }
