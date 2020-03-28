@@ -29,11 +29,17 @@ public class Offer extends AbstractEntity {
     @Column(name = "cupo")
     private Double quota;
 
+    @Column(name = "solicitud_id")
+    private Long applicationId;
+
+    @Column(name = "producto_id")
+    private Long productId;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "solicitud_id")
+    @JoinColumn(name = "solicitud_id", insertable = false, updatable = false)
     private Application application;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "producto_id")
+    @JoinColumn(name = "producto_id", insertable = false, updatable = false)
     private Product product;
 }
