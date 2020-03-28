@@ -84,7 +84,7 @@ public class OfferController {
 
                 Map<String, Object> grantedAmount = new HashMap<>();
                 grantedAmount.put("currency", "COP");
-                grantedAmount.put("value", faker.number().numberBetween(1000000L, 25000000L));
+                grantedAmount.put("value", faker.number().numberBetween(1000000L, 17000000L));
                 suggestDTO.setGrantedAmount(grantedAmount);
 
                 suggestDTO.setAdditionalInformation(offer.getProduct().getName());
