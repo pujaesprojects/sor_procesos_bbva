@@ -9,8 +9,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 
 @Getter
 @Setter
@@ -24,7 +26,14 @@ public class Offer extends AbstractEntity {
     @Column(name = "estatus", length = 32)
     private Status status;
 
-    @Size(max = 512)
-    @Column(name = "descripcion", length = 512)
-    private String description;
+    @Column(name = "cupo")
+    private Double quota;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "solicitud_id")
+    private Application application;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "producto_id")
+    private Product product;
 }
