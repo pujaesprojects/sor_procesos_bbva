@@ -15,4 +15,6 @@ public interface ApplicationRepository extends PagingAndSortingRepository<Applic
    );
 
    List<Application> findAllByPersonIdentityDocument(@Param("document") String document);
+
+   Application findAllByCaseId(@Param("caseId") Long caseId);
 }

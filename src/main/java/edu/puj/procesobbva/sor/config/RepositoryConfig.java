@@ -4,6 +4,7 @@ import edu.puj.procesobbva.sor.domain.Answer;
 import edu.puj.procesobbva.sor.domain.Application;
 import edu.puj.procesobbva.sor.domain.Card;
 import edu.puj.procesobbva.sor.domain.Client;
+import edu.puj.procesobbva.sor.domain.Indicator;
 import edu.puj.procesobbva.sor.domain.Offer;
 import edu.puj.procesobbva.sor.domain.Person;
 import edu.puj.procesobbva.sor.domain.Product;
@@ -24,7 +25,8 @@ public class RepositoryConfig implements RepositoryRestConfigurer {
             Offer.class,
             Person.class,
             Product.class,
-            Question.class
+            Question.class,
+            Indicator.class
         );
     }
 }
