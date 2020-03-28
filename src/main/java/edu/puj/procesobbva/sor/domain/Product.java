@@ -37,6 +37,9 @@ public class Product extends AbstractEntity {
     @Column(name = "estatus", length = 16)
     private Status status;
 
+    @Column(name = "bin")
+    private Integer bin;
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
     private Set<Offer> offers;
 }

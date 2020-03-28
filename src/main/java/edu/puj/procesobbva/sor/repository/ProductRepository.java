@@ -10,4 +10,6 @@ import java.util.List;
 @RepositoryRestResource
 public interface ProductRepository extends PagingAndSortingRepository<Product, Long> {
     List<Product> findAllByOffersApplicationId(@Param("applicationId") Long id);
+
+    List<Product> findAllByBinIn(@Param("bines") List<Integer> bines);
 }
