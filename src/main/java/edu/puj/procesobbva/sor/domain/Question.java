@@ -1,6 +1,7 @@
 package edu.puj.procesobbva.sor.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import edu.puj.procesobbva.sor.domain.enumeration.QuestionType;
 import edu.puj.procesobbva.sor.domain.enumeration.Status;
 import lombok.Getter;
@@ -47,7 +48,7 @@ public class Question extends AbstractEntity {
         fetch = FetchType.LAZY, mappedBy = "question",
         cascade = CascadeType.ALL, orphanRemoval = true
     )
-    @JsonBackReference
+    @JsonIgnore
     private Set<Answer> answers;
 
     @Override

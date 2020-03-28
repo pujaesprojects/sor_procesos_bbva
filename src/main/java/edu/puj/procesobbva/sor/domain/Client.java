@@ -29,6 +29,9 @@ public class Client extends AbstractEntity {
     @Column(name = "estatus")
     private Status status;
 
+    @Column(name = "tiene_preaprobado")
+    private Boolean preApproved;
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "persona_id")
     private Person person;

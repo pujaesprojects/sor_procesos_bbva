@@ -1,7 +1,6 @@
 package edu.puj.procesobbva.sor.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import edu.puj.procesobbva.sor.domain.enumeration.DocumentType;
 import lombok.Getter;
 import lombok.Setter;
@@ -85,14 +84,13 @@ public class Person extends AbstractEntity {
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "person")
     private Client client;
 
-    @JsonManagedReference
     @OneToMany(
         fetch = FetchType.LAZY, mappedBy = "person",
         cascade = CascadeType.ALL, orphanRemoval = true
     )
     private Set<Answer> answers;
 
-    @JsonBackReference
+    @JsonIgnore
     @OneToMany(
         fetch = FetchType.LAZY, mappedBy = "person"
     )

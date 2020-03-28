@@ -1,7 +1,6 @@
 package edu.puj.procesobbva.sor.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -30,12 +29,11 @@ public class Answer extends AbstractEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pregunta_id")
-    @JsonManagedReference
     private Question question;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "persona_id")
-    @JsonBackReference
+    @JsonIgnore
     private Person person;
 
     @Override

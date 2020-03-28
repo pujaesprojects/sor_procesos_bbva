@@ -1,6 +1,5 @@
 package edu.puj.procesobbva.sor.domain;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,7 +28,6 @@ public class Application extends AbstractEntity {
     @Column(name = "activo")
     private Boolean active;
 
-    @JsonManagedReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "persona_id")
     private Person person;
