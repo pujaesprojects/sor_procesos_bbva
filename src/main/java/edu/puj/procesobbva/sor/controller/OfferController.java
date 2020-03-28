@@ -79,7 +79,7 @@ public class OfferController {
 
                 Map<String, String> brandAssociation = new HashMap<>();
                 productType.put("id", offer.getProduct().getType().toString());
-                productType.put("name", StringUtils.capitalize(offer.getProduct().getType().toString()));
+                productType.put("name", StringUtils.capitalize(offer.getProduct().getType().toString().toLowerCase()));
                 suggestDTO.setBrandAssociation(brandAssociation);
 
                 Map<String, Object> grantedAmount = new HashMap<>();
